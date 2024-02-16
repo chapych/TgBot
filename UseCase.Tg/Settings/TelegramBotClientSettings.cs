@@ -1,4 +1,4 @@
-﻿namespace UseCase.Settings;
+﻿namespace TgBot.UseCase.Settings;
 
 public class TelegramBotClientSettings
 {

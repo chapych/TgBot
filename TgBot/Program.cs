@@ -1,11 +1,11 @@
+using KudaGo.Infrastructure.Configurations;
+using KudaGo.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Telegram.Bot;
-using TgBot.Models.EF;
-using UseCase.Interfaces;
-using UseCase.Services.Bot;
-using UseCase.Services.KeyboardFactory;
-using UseCase.Settings;
-using TypeConverter = System.ComponentModel.TypeConverter;
+using TgBot.Infrastructure.Context;
+using TgBot.Infrastructure.Extensions;
+using TgBot.UseCase.Extensions;
+using TgBot.UseCase.Settings;
 
 namespace TgBot;
 
@@ -15,16 +15,16 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
-
         builder.Services.AddControllers().AddNewtonsoftJson();
+
         var telegramSettings = builder.Configuration.GetSection(nameof(TelegramSettings));
         builder.Services.Configure<TelegramSettings>(telegramSettings);
-        //var kudaGoSettings = builder.Configuration.GetSection(nameof(KudaGoSettings));
-        //builder.Services.Configure<KudaGoSettings>(kudaGoSettings);
+
+        var kudaGoSettings = builder.Configuration.GetSection(nameof(KudaGoSettings));
+        builder.Services.Configure<KudaGoSettings>(kudaGoSettings);
+
         var telegramBotClientSettings = builder.Configuration.GetSection(nameof(TelegramBotClientSettings));
         builder.Services.Configure<TelegramBotClientSettings>(telegramBotClientSettings);
-
 
         builder.Services.AddHttpClient<ITelegramBotClient, TelegramBotClient>(httpClient =>
         {
@@ -38,8 +38,9 @@ public class Program
         var connection = builder.Configuration.GetConnectionString("ApplicationContext");
         builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
 
-        builder.Services.AddScoped<IBot, Bot>();
-        builder.Services.AddScoped<IKeyboardFactory, KeyboardFactory>();
+        builder.Services.AddUseCase();
+        builder.Services.AddInfrastructure();
+        builder.Services.AddKudaGo();
 
         var app = builder.Build();
 

@@ -1,8 +1,8 @@
-﻿using Entities.Interfaces;
+﻿using TgBot.Entities.Interfaces;
 
-namespace Entities.Entities;
+namespace TgBot.Entities.Entities;
 
-public class User
+public class TgUser
 {
     public Guid Id { get; private set; }
     public long ChatId { get; private set; }
@@ -10,7 +10,7 @@ public class User
     private readonly List<IUserEvent> _loadedEvents;
     public IEnumerable<IUserEvent> LoadedEvents => _loadedEvents.AsReadOnly();
 
-    public User(long chatId)
+    public TgUser(long chatId)
     {
         ChatId = chatId;
     

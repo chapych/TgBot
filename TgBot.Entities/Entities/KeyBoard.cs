@@ -1,4 +1,4 @@
-﻿namespace Entities.Entities;
+﻿namespace TgBot.Entities.Entities;
 
 public class KeyBoard
 {

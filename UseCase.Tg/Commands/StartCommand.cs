@@ -1,6 +1,6 @@
-﻿using UseCase.Interfaces;
+﻿using TgBot.UseCase.Interfaces;
 
-namespace UseCase.Commands;
+namespace TgBot.UseCase.Commands;
 
 public class StartCommand : ICommand
 {

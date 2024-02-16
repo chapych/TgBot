@@ -1,4 +1,4 @@
-﻿namespace Entities.Constants;
+﻿namespace TgBot.Entities.Constants;
 
 public static class Constants
 {

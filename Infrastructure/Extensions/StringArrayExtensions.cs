@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Telegram.Bot.Types.ReplyMarkups;
+﻿using Telegram.Bot.Types.ReplyMarkups;
 
-namespace Infrastructure.Extensions;
+namespace TgBot.Infrastructure.Extensions;
 
 public static class StringArrayExtensions
 {

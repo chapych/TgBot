@@ -1,11 +1,11 @@
-﻿using Entities.Entities;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using TgBot.Entities.Entities;
 
-namespace UseCase.Interfaces;
+namespace TgBot.UseCase.Interfaces;
 
 public interface IUserRepository
 {
-    Task<User> FindByChat(long chatId, params Expression<Func<User, object>>[] included);
+    Task<TgUser> FindByChat(long chatId, params Expression<Func<TgUser, object>>[] included);
     Task SaveChangesAsync();
     void Add(long chatId);
 }

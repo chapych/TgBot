@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TgBot", "TgBot\TgBot.csproj
 		{C84D4287-7C53-4531-9CFF-F5997AEBF55D} = {C84D4287-7C53-4531-9CFF-F5997AEBF55D}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "TgBot.Entities\Entities.csproj", "{B9BEDCF7-3AB6-40BB-B00A-A9E2E3BCA0D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TgBot.Entities", "TgBot.Entities\TgBot.Entities.csproj", "{B9BEDCF7-3AB6-40BB-B00A-A9E2E3BCA0D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseCase", "UseCase.Tg\UseCase.csproj", "{C84D4287-7C53-4531-9CFF-F5997AEBF55D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TgBot.UseCase", "UseCase.Tg\TgBot.UseCase.csproj", "{C84D4287-7C53-4531-9CFF-F5997AEBF55D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{B28026BA-7EB8-454B-AD63-517888340E1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TgBot.Infrastructure", "Infrastructure\TgBot.Infrastructure.csproj", "{B28026BA-7EB8-454B-AD63-517888340E1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

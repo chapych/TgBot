@@ -1,4 +1,4 @@
-﻿namespace UseCase.Interfaces;
+﻿namespace TgBot.UseCase.Interfaces;
 
 public interface ICommand
 {

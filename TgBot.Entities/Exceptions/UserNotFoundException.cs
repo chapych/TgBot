@@ -1,4 +1,4 @@
-﻿namespace Entities.Exceptions;
+﻿namespace TgBot.Entities.Exceptions;
 
 public class UserNotFoundException : Exception
 {

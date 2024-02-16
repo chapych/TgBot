@@ -1,6 +1,6 @@
-﻿using Entities.Entities;
+﻿using TgBot.Entities.Entities;
 
-namespace UseCase.Interfaces;
+namespace TgBot.UseCase.Interfaces;
 
 public interface IKeyboardFactory
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Telegram.Bot.Types;
-using UseCase.Interfaces;
+using TgBot.UseCase.Interfaces;
 
 namespace TgBot.Controllers;
 

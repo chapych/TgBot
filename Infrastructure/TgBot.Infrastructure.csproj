@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TgBot.Entities\TgBot.Entities.csproj" />
+    <ProjectReference Include="..\UseCase.Tg\TgBot.UseCase.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="KudaGo.Infrastructure">
+      <HintPath>..\..\KudaGo\Infrastructure\bin\Debug\net8.0\KudaGo.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="KudaGo.UseCases">
+      <HintPath>..\..\KudaGo\Infrastructure\bin\Debug\net8.0\KudaGo.UseCases.dll</HintPath>
+    </Reference>
+    <Reference Include="KudGo.Entities">
+      <HintPath>..\..\KudaGo\Infrastructure\bin\Debug\net8.0\KudGo.Entities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

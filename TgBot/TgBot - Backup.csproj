@@ -18,15 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\TgBot.Infrastructure.csproj" />
-    <ProjectReference Include="..\TgBot.Entities\TgBot.Entities.csproj" />
     <ProjectReference Include="..\UseCase.Tg\TgBot.UseCase.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="KudaGo.Infrastructure">
-      <HintPath>..\..\KudaGo\Infrastructure\bin\Debug\net8.0\KudaGo.Infrastructure.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

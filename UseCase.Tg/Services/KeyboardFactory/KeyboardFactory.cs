@@ -1,10 +1,10 @@
-﻿using Entities.Constants;
-using Entities.Entities;
-using UseCase.Interfaces;
+﻿using TgBot.Entities.Constants;
+using TgBot.Entities.Entities;
+using TgBot.UseCase.Interfaces;
 
-namespace UseCase.Services.KeyboardFactory;
+namespace TgBot.UseCase.Services.KeyboardFactory;
 
-public class KeyboardFactory : IKeyboardFactory
+internal class KeyboardFactory : IKeyboardFactory
 {
     public KeyBoard CreateMainKeyboard()
     {

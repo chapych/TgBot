@@ -1,11 +1,11 @@
-﻿using Entities.Constants;
-using Telegram.Bot.Types;
-using UseCase.Commands;
-using UseCase.Interfaces;
+﻿using Telegram.Bot.Types;
+using TgBot.Entities.Constants;
+using TgBot.UseCase.Commands;
+using TgBot.UseCase.Interfaces;
 
-namespace UseCase.Services.Bot;
+namespace TgBot.UseCase.Services.Bot;
 
-public class Bot : IBot
+internal class Bot : IBot
 {
     private readonly Dictionary<string, ICommand> _commands;
 
@@ -26,15 +26,14 @@ public class Bot : IBot
         };
     }
 
-    public async Task HandleUpdate(Update update)
+    public Task HandleUpdate(Update update)
     {
-        var handler = update switch
+        return update switch
         {
             { Message: { } message } => BotOnMessageReceived(message),
             { CallbackQuery: { } callbackQuery} => BotOnCallbackQueryReceived(callbackQuery),
             _ => throw new ArgumentOutOfRangeException(nameof(update), update, null)
         };
-        await handler;
     }
 
     private async Task BotOnCallbackQueryReceived(CallbackQuery callbackQuery)

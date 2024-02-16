@@ -1,6 +1,6 @@
-﻿using Entities.Interfaces;
+﻿using TgBot.Entities.Interfaces;
 
-namespace UseCase.Interfaces;
+namespace TgBot.UseCase.Interfaces;
 
 public interface IEventLoader
 {
