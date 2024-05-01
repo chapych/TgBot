@@ -1,23 +1,26 @@
-﻿using TgBot.Entities.Interfaces;
+﻿using TgBot.Entities.Entities.Base;
+using TgBot.Entities.Enums;
 
 namespace TgBot.Entities.Entities;
 
-public class TgUser
+public class TgUser : BaseEntity<Guid>
 {
-    public Guid Id { get; private set; }
-    public long ChatId { get; private set; }
+    private readonly List<Event> _events;
+    public long ChatId { get; init; }
+    public State State { get; private set; }
+    public IEnumerable<Event> Events => _events.AsReadOnly();
 
-    private readonly List<IUserEvent> _loadedEvents;
-    public IEnumerable<IUserEvent> LoadedEvents => _loadedEvents.AsReadOnly();
 
     public TgUser(long chatId)
     {
         ChatId = chatId;
-    
-        _loadedEvents = new List<IUserEvent>();
+        State = State.Start;
+
+        _events = [];
     }
 
-    public void AddLoadedEvent(IUserEvent @event) => _loadedEvents.Add(@event);
-    public void AddLoadedEvents(IEnumerable<IUserEvent> events) => _loadedEvents.AddRange(events);
-    public void RemoveEvent(IUserEvent @event) => _loadedEvents.Remove(@event);
+    public void AddEvent(Event @event) => _events.Add(@event);
+    public void AddEvents(IEnumerable<Event> events) => _events.AddRange(events);
+    public void RemoveEvent(Event @event) => _events.Remove(@event);
+    public void ChangeState(State state) => State = state;
 }

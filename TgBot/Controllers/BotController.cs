@@ -16,9 +16,9 @@ public class BotController : Controller
     }
 
     [HttpPost]
-    public async Task Post(Update update) 
+    public Task Post(Update update) 
     {
-        await _bot.HandleUpdate(update);
+        return _bot.HandleUpdate(update);
     }
     [HttpGet]
     public string Get()

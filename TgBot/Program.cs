@@ -1,58 +1,65 @@
+using System;
 using KudaGo.Infrastructure.Configurations;
 using KudaGo.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot;
-using TgBot.Infrastructure.Context;
+using TgBot.Infrastructure.EF;
 using TgBot.Infrastructure.Extensions;
+using TgBot.Middleware;
 using TgBot.UseCase.Extensions;
 using TgBot.UseCase.Settings;
 
-namespace TgBot;
-
-public class Program
+namespace TgBot
 {
-    public static void Main(string[] args)
+    public class Program
     {
-        var builder = WebApplication.CreateBuilder(args);
-
-        builder.Services.AddControllers().AddNewtonsoftJson();
-
-        var telegramSettings = builder.Configuration.GetSection(nameof(TelegramSettings));
-        builder.Services.Configure<TelegramSettings>(telegramSettings);
-
-        var kudaGoSettings = builder.Configuration.GetSection(nameof(KudaGoSettings));
-        builder.Services.Configure<KudaGoSettings>(kudaGoSettings);
-
-        var telegramBotClientSettings = builder.Configuration.GetSection(nameof(TelegramBotClientSettings));
-        builder.Services.Configure<TelegramBotClientSettings>(telegramBotClientSettings);
-
-        builder.Services.AddHttpClient<ITelegramBotClient, TelegramBotClient>(httpClient =>
+        public static void Main(string[] args)
         {
-            var botConfig = telegramSettings.Get<TelegramSettings>();
-            return botConfig == null
-                ? throw new NullReferenceException()
-                : new TelegramBotClient(new TelegramBotClientOptions(botConfig.Token!),
-                    httpClient);
-        });
+            var builder = WebApplication.CreateBuilder(args);
 
-        var connection = builder.Configuration.GetConnectionString("ApplicationContext");
-        builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+            builder.Services.AddControllers().AddNewtonsoftJson();
 
-        builder.Services.AddUseCase();
-        builder.Services.AddInfrastructure();
-        builder.Services.AddKudaGo();
+            var telegramSettings = builder.Configuration.GetSection(nameof(TelegramSettings));
+            builder.Services.Configure<TelegramSettings>(telegramSettings);
 
-        var app = builder.Build();
+            var kudaGoSettings = builder.Configuration.GetSection(nameof(KudaGoSettings));
+            builder.Services.Configure<KudaGoSettings>(kudaGoSettings);
 
-        // Configure the HTTP request pipeline.
+            var telegramBotClientSettings = builder.Configuration.GetSection(nameof(TelegramBotClientSettings));
+            builder.Services.Configure<TelegramBotClientSettings>(telegramBotClientSettings);
 
-        app.UseHttpsRedirection();
+            builder.Services.AddHttpClient<ITelegramBotClient, TelegramBotClient>(httpClient =>
+            {
+                var botConfig = telegramSettings.Get<TelegramSettings>();
+                return botConfig == null
+                    ? throw new NullReferenceException()
+                    : new TelegramBotClient(new TelegramBotClientOptions(botConfig.Token!),
+                        httpClient);
+            });
 
-        app.UseAuthorization();
+            var connection = builder.Configuration.GetConnectionString("ApplicationContext");
+            builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
 
+            builder.Services.AddUseCase();
+            builder.Services.AddInfrastructure();
+            builder.Services.AddKudaGo();
 
-        app.MapControllers();
+            var app = builder.Build();
 
-        app.Run();
+            // Configure the HTTP request pipeline.
+
+            app.UseHttpsRedirection();
+
+            app.UseAuthorization();
+
+            app.MapControllers();
+
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+            app.Run();
+        }
     }
 }

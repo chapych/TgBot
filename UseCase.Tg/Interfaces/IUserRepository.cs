@@ -5,7 +5,7 @@ namespace TgBot.UseCase.Interfaces;
 
 public interface IUserRepository
 {
-    Task<TgUser> FindByChat(long chatId, params Expression<Func<TgUser, object>>[] included);
+    Task<TgUser> FindByChatOrDefaultAsync(long chatId, params Expression<Func<TgUser, object>>[] included);
     Task SaveChangesAsync();
-    void Add(long chatId);
+    TgUser Add(long chatId);
 }

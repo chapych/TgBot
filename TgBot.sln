@@ -15,6 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TgBot.UseCase", "UseCase.Tg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TgBot.Infrastructure", "Infrastructure\TgBot.Infrastructure.csproj", "{B28026BA-7EB8-454B-AD63-517888340E1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TgBot.Infrastructure.Tests", "Tests\TgBot.Infrastructure.Tests.csproj", "{C9855DB5-9732-49E4-8764-DB216045EBEF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B28026BA-7EB8-454B-AD63-517888340E1C} = {B28026BA-7EB8-454B-AD63-517888340E1C}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +42,10 @@ Global
 		{B28026BA-7EB8-454B-AD63-517888340E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B28026BA-7EB8-454B-AD63-517888340E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B28026BA-7EB8-454B-AD63-517888340E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9855DB5-9732-49E4-8764-DB216045EBEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9855DB5-9732-49E4-8764-DB216045EBEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9855DB5-9732-49E4-8764-DB216045EBEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9855DB5-9732-49E4-8764-DB216045EBEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,9 @@
-﻿namespace TgBot.UseCase.Interfaces;
+﻿using TgBot.Entities.Entities;
+using TgBot.UseCase.Enums;
+
+namespace TgBot.UseCase.Interfaces;
 
 public interface ICommand
 {
-    Task ExecuteAsync(long chatId);
+    Task<Trigger> ExecuteAsync(long chatId);
 }
